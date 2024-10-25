@@ -87,8 +87,6 @@ void aplicarFiltro(int *imagen, int *imagenProcesada, int width, int height) {
     int Gx[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
     int Gy[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
 
-    printf("Numero de hilos: %d\n",omp_get_max_threads());
-
     //Parelización con OpenMP usando collapse para paralelizar dos bucles anidados con un máximo de 2*omp_get_max_threads() hilos
     #pragma omp parallel for collapse(2) num_threads(omp_get_max_threads()*2)
     for (int y = 1; y < height - 1; y++) {
